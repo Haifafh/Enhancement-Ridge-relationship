@@ -1,0 +1,51 @@
+function beautifulSurface()
+%%Old
+% P is a vector e.g. [3,1,9]
+% D is a 2D image of the distances, the axes Y is the height e.g.
+% hausdorffDistance
+%   the axis X and Z may be e.g. the parameters
+
+% consider creating a custom colormap, e.g. with linspace on 3 hard coded
+% colors
+%% Create new matrics
+% hausdorff = zeros(6,18,1);
+% imAbsDiff = zeros(6,18,1);
+% jaccardI = zeros(6,18,1);
+%% Load mat files
+outputDir = '/mnt/storage/home/haifa/curvilinear-methods/';
+hausdorff = load(fullfile(outputDir, 'HD.mat'));
+imAbsDiff = load(fullfile(outputDir, 'AbsDif.mat'));
+jaccardI = load(fullfile(outputDir, 'JI.mat'));
+%% Means and Std of metrics
+hausdorffMeans = mean(hausdorff.resMetrics,3);
+%hausdorffStds  = std(hausdorff.resMetrics,0,3);
+jaccardMeans   = mean(jaccardI.resMetrics,3);
+%jaccardStds    = std(jaccardI.resMetrics,0,3);
+imAbsDiffMeans = mean(imAbsDiff.resMetrics,3);
+%imAbsDiffStds  = std(imAbsDiff.resMetrics,0,3);
+
+a = makeColorMap([55,126,184]/255,[255,229,204]/255,[255,51,51]/255);
+%a = makeColorMap([55,126,184]/255,[255,204,153]/255,[255,51,51]/255);
+%% Figures
+s11 = surf(hausdorffMeans,'FaceAlpha',0.8);colormap(a);
+s11.EdgeColor = 'none';
+% s12 = surf(hausdorffStds,'FaceAlpha',0.8);colormap(a);
+% s12.EdgeColor = 'none';
+%%
+s21 = surf(jaccardMeans,'FaceAlpha',0.8);colormap(a);
+s21.EdgeColor = 'none';
+% s22 = surf(jaccardStds,'FaceAlpha',0.8);colormap(a);
+% s22.EdgeColor = 'none';
+%%
+s31 = surf(imAbsDiffMeans,'FaceAlpha',0.8);colormap(a);
+s31.EdgeColor = 'none';
+% s32 = surf(imAbsDiffStds,'FaceAlpha',0.8);colormap(a);
+% s32.EdgeColor = 'none';
+
+%% Plots
+figure(plot3(s11);
+plot3(s21);
+plot3(s31);
+
+
+end
