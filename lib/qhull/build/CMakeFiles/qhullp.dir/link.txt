@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/qhullp.dir/src/qhull/unix.c.o  -o qhullp  libqhull_p.7.2.0.dylib -lm 
