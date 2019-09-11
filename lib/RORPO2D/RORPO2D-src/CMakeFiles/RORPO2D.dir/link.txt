@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++98    CMakeFiles/RORPO2D.dir/main.cpp.o  -o RORPO2D -rdynamic -lpng 
